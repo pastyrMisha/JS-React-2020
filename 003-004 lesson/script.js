@@ -1,4 +1,5 @@
 'use strict';
+// - фраза, директива, что мы пишем на стандарте ES6
 
 // 003
 // console.log(leftBorderWidth);
@@ -114,5 +115,44 @@
 // console.log(typeof(null)); 
 // - Object это официальная ошибка JS, так как null - это отдельный тип данных
 
-
 // / 005
+
+// 006
+
+// console.log(typeof("arr" + "- object"));
+// console.log(typeof(4 + +"- object"));
+
+// let answer = +prompt("Есть ли Вам 18?", "Да");
+
+// console.log(typeof(answer));
+
+// - тут везде унарный плюс, перед prompt или object - превращает все в численное значение
+
+
+// let incr = 10,
+//     decr = 10;
+
+// // incr++;
+// // decr--;
+// // префиксная форма
+
+// console.log(incr++);
+// console.log(decr--);
+// // постфиксная  форма
+
+// console.log(5%2);
+
+// = один раз это присваивание
+// == это проверка на равенство
+// === это строгое сравнение по типу данных
+// console.log("2" === 2);
+
+// let isChecked = true,
+//     isClose = false;
+
+//     console.log(isChecked || !isClose);
+
+// a = 5;
+// console.log(a); // a is not defined
+// - в старом стандарте бы сработало - ошибка JS !!! (поэтому используем "use strict")
+// / 006
