@@ -20,9 +20,8 @@ let answer1 = prompt('Введите обязательную статью ра�
 appData.expenses.answer1 = answer2;
 appData.expenses.answer3 = answer4;
 
-// console.log(appData.budget);
-// console.log(appData.timeData);
-// console.log(appData.expenses);
+// 
+
 
 
 alert(appData.budget / 30);
