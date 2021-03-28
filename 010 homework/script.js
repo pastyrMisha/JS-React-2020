@@ -61,7 +61,6 @@ detectLevel();
 };
 detectDayBudget();
 
-
 function checkSavings() {
     if(appData.savings == true) {
         let save = +prompt("Какова сумма накоплений?"),
@@ -73,9 +72,14 @@ function checkSavings() {
 }
 checkSavings();
 
-function chooseOptExpenses {
-    for (i = 0; i < 3; i++) {
-        let optional = +prompt("Какова сумма накоплений?"),
+function chooseOptExpenses() {
+    let n;
+    for (n = 0; n < 3; n++) {
+        let optional = +prompt("Статья необязательных расходов?")
+        optional = appData.optionalExpenses[n];
     }
+    return optional;
 }
+chooseExpenses();
 
+console.log(chooseExpenses());
