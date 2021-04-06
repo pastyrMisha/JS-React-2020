@@ -34,7 +34,7 @@ for (let i = 0; i < 2; i++) {
         && a != '' && b != '' && a.length < 50) {
         appData.expenses[a] = b;
     } else {
-
+        i = i - 1;
     }
 }
 }
@@ -72,11 +72,20 @@ function checkSavings() {
 }
 checkSavings();
 
+let optional;
+
 function chooseOptExpenses() {
-    for (n = 0; n < 3; n++) {
-        let optional = +prompt("Статья необязательных расходов?")
+    for (let n = 0; n < 3; n++) {
+        optional = prompt("Статья необязательных расходов?")
+
+        if ((typeof(a)) === 'string' && (typeof(a)) != null && a != '' && a.length < 50) {
+            appData.optionalExpenses[n] = optional;
+        
+    } else {
+        n = n - 1;
     }
-    
+    }
 }
 chooseOptExpenses();
 
+console.log(appData);
