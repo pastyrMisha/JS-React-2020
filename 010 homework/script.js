@@ -75,12 +75,11 @@ checkSavings();
 let optional;
 
 function chooseOptExpenses() {
-    for (let n = 0; n < 3; n++) {
+    for (let n = 1; n < 4; n++) {
         optional = prompt("Статья необязательных расходов?")
 
-        if ((typeof(a)) === 'string' && (typeof(a)) != null && a != '' && a.length < 50) {
+        if ((typeof(optional)) === 'string' && (typeof(optional)) != null && optional != '' && optional.length < 50) {
             appData.optionalExpenses[n] = optional;
-        
     } else {
         n = n - 1;
     }
@@ -88,4 +87,3 @@ function chooseOptExpenses() {
 }
 chooseOptExpenses();
 
-console.log(appData);
