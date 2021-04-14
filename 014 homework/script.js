@@ -9,7 +9,7 @@ function start() {
     time = prompt("Введите дату в формате YYYY-MM-DD", '');
 
     while(isNaN(money) || money == "" || money == null) {
-        money = +prompt("Ваш бюджет на месяц?");
+        money = +prompt("Ваш бюджет на месяц?", "");
     }
 }
 start();
@@ -68,9 +68,11 @@ let appData = {
             }
         },
         chooseIncome: function() {
+            // while((typeof(items)) === 'string' || items == "" || items == null) {
             let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
             appData.income = items.split(', ');
             appData.income.push(prompt('Может что-то еще?'));
             appData.income.sort();
+            // }
         }
     };
