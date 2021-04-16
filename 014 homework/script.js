@@ -9,7 +9,11 @@ function start() {
     time = prompt("Введите дату в формате YYYY-MM-DD", '');
 
     while(isNaN(money) || money == "" || money == null) {
+<<<<<<< HEAD
         money = +prompt("Ваш бюджет на месяц?", "");
+=======
+        money = prompt("Ваш бюджет на месяц?");
+>>>>>>> d726ac0c10eac2550ebc5de000d6f81ddb853591
     }
 }
 start();
@@ -68,11 +72,29 @@ let appData = {
             }
         },
         chooseIncome: function() {
+<<<<<<< HEAD
             // while((typeof(items)) === 'string' || items == "" || items == null) {
             let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
+=======
+
+            let items;
+            let dop;
+            while(!isNaN(items) == true || items == "" || items == null) {
+
+             items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
+            };
+            while(!isNaN(dop) == true || dop == "" || dop == null) {
+                dop = prompt('Может что-то еще?', '');
+            };
+>>>>>>> d726ac0c10eac2550ebc5de000d6f81ddb853591
             appData.income = items.split(', ');
-            appData.income.push(prompt('Может что-то еще?'));
+            appData.income.push(dop);
             appData.income.sort();
+<<<<<<< HEAD
             // }
+=======
+
+>>>>>>> d726ac0c10eac2550ebc5de000d6f81ddb853591
         }
+      
     };
