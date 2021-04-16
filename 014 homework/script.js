@@ -10,7 +10,7 @@ function start() {
 
     while(isNaN(money) || money == "" || money == null) {
 
-        money = prompt("Ваш бюджет на месяц?");
+        money = prompt("Ваш бюджет на месяц?", "");
 
     }
 }
@@ -89,3 +89,11 @@ let appData = {
         }
       
     };
+
+
+    let salary = 0;
+
+    appData.forEach((element) => {
+        console.log(element);
+        salary++;
+      });
