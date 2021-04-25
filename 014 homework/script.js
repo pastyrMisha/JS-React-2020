@@ -4,15 +4,13 @@
 
 let money, time;
 
-function start() {
-    money = +prompt("Ваш бюджет на месяц?", '');
-    time = prompt("Введите дату в формате YYYY-MM-DD", '');
-
+function start() { 
     while(isNaN(money) || money == "" || money == null) {
 
         money = prompt("Ваш бюджет на месяц?", "");
 
     }
+    time = prompt("Введите дату в формате YYYY-MM-DD", '');
 }
 start();
 
@@ -78,22 +76,55 @@ let appData = {
 
              items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
             };
+            
             while(!isNaN(dop) == true || dop == "" || dop == null) {
                 dop = prompt('Может что-то еще?', '');
             };
 
-            appData.income = items.split(', ');
+            appData.income = items.split(',');
+            // appData.income = appData.income.map(item => item.trim()); убрать пробелы!!!!!
             appData.income.push(dop);
             appData.income.sort();
+
+            let str = "Способы доп. заработка: \n";
+
+
+            // for(let i = 0; i < this.income.length; i++){
+            //     str = str + `${i+1}: ${this.income[i]}\n`;
+            // }
+
+
+
+            this.income.forEach((item, i) => {
+
+                str += `${i+1}: ${item}\n`;
+            })
+         
+
+
+            alert(str);
 
         }
       
     };
+    appData.chooseExpenses();
+    appData.detectDayBudget();
+    appData.detectLevel();
+    appData.checkSavings();
+    appData.chooseOptExpenses();
+    appData.chooseIncome();
 
 
-    let salary = 0;
+    for(let key in appData){
+        if(typeof appData[key] !== "function") {
+            console.log(key + ": " );
+            console.log(appData[key]);
+        };
+    }
 
-    appData.forEach((element) => {
-        console.log(element);
-        salary++;
-      });
+    // Object.entries(appData).forEach(([k, v]) => {
+    //     if(typeof v !== "function") {
+    //         console.log(k + ": " +v)
+    //     };
+    // })
+
