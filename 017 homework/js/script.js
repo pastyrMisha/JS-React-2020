@@ -27,7 +27,6 @@ title.textContent = ('Мы продаем только подлинную тех
 column[1].removeChild(adv);
 
 
-let question;
+let question = prompt('Ваше отношение к технике apple');
 
-question = prompt('Ваше отношение к технике apple');
-answer.appendChild(question);
+answer.textContent = (question);
