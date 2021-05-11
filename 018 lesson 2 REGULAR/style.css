@@ -1,0 +1,15 @@
+
+.box {
+	width: 400px;
+	height: 200px;
+	margin-top: 10px;
+	border: none;
+	background-color: red;
+	color: #000;
+	font-size: x-large;
+	font-weight: bold;
+	line-height: 0px;
+	cursor: pointer;
+	outline: none;
+	padding-top: 20px;
+}
