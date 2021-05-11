@@ -1,0 +1,11 @@
+
+button {
+	margin-top: 10px;
+	border: none;
+	border-radius: 8px;
+	background-color: green;
+	color: #fff;
+	cursor: pointer;
+	outline: none;
+   padding: 20px 30px;
+}
