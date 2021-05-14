@@ -35,6 +35,18 @@ startBtn.addEventListener('click', function () {
     while (isNaN(money) || money == "" || money == null) {
         money = prompt("Ваш бюджет на месяц?", "");
     }
+
+    expensesBtn.disabled = false;
+    optionalexpensesBtn.disabled = false;
+    countBtn.disabled = false;
+    expensesBtn.style.opacity  = "1";
+    optionalexpensesBtn.style.opacity  = "1";
+    countBtn.style.opacity  = "1";
+    expensesBtn.style.cursor = "pointer";
+    optionalexpensesBtn.style.cursor = "pointer";
+    countBtn.style.cursor = "pointer";
+
+
     appData.budget = money;
     appData.timeData = time;
     budgetValue.textContent = money.toFixed();
@@ -136,4 +148,15 @@ let appData = {
     optionalExpenses: {},
     income: [],
     savings: false
+};
+
+if (expensesBtn.disabled && optionalexpensesBtn.disabled && countBtn.disabled == true) {
+
+    expensesBtn.style.opacity  = ".65";
+    optionalexpensesBtn.style.opacity  = ".65";
+    countBtn.style.opacity  = ".65";
+    expensesBtn.style.cursor = "not-allowed";
+    optionalexpensesBtn.style.cursor = "not-allowed";
+    countBtn.style.cursor = "not-allowed";
+
 };
