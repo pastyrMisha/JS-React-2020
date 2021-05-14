@@ -73,6 +73,9 @@ expensesBtn.addEventListener('click', function () {
     expensesValue.textContent = sum;
 });
 
+
+
+
 optionalexpensesBtn.addEventListener('click', function () {
     for (let i = 0; i < optionalExpensesItem.length; i++) {
 
@@ -84,7 +87,7 @@ optionalexpensesBtn.addEventListener('click', function () {
 
 countBtn.addEventListener('click', function () {
     if (appData.budget != undefined) {
-        appData.moneyPerDay = ((appData.budget - 500) / 30).toFixed();
+        appData.moneyPerDay = ((appData.budget - summaryExpenses()) / 30).toFixed();
         dayBudgetValue.textContent = appData.moneyPerDay;
 
         if (appData.moneyPerDay < 100) {
@@ -148,6 +151,16 @@ let appData = {
     optionalExpenses: {},
     income: [],
     savings: false
+};
+
+
+let summaryExpenses = () => {
+    let itemExpenses = Object.values(appData.expenses),
+        sum = 0;
+for(let i = 0; i < itemExpenses.length; i++) {
+    sum += +itemExpenses[i];
+};
+return sum;
 };
 
 if (expensesBtn.disabled && optionalexpensesBtn.disabled && countBtn.disabled == true) {
