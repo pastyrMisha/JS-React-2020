@@ -84,7 +84,7 @@ optionalexpensesBtn.addEventListener('click', function () {
 
 countBtn.addEventListener('click', function () {
     if (appData.budget != undefined) {
-        appData.moneyPerDay = (appData.budget / 30).toFixed();
+        appData.moneyPerDay = ((appData.budget - 500) / 30).toFixed();
         dayBudgetValue.textContent = appData.moneyPerDay;
 
         if (appData.moneyPerDay < 100) {
@@ -132,7 +132,7 @@ percentValue.addEventListener('input', function() {
     if (appData.savings == true) {
         let sum = +sumValue.value,
             percent = +percentValue.value;
-
+1   
         appData.monthIncome = sum/100/12*percent;
         appData.yearIncome = sum/100*percent;
 
