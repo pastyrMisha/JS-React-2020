@@ -40,42 +40,46 @@ window.addEventListener('DOMContentLoaded', function () {
         description = document.querySelectorAll('.info-tabcontent');
 
 
-    function start(a) {
 
-        for (let i = a; i < tab.length; i++) {
+    function start() {
+        
+       
+        for (let i = 0; i < tab.length; i++) {
 
-            tab[a].addEventListener('click', function (event) {
+        description[i].classList.add('hide');
+        description[i].classList.remove('show');
+        
+
+            console.log(sum);
+
+
+
+
+
+            tab[i].addEventListener('click', function(event) {
+                
                 let target = event.target;
-            if ()
-            });
 
+                if (target == tab[i]) {
+                    description[i].classList.remove('hide');
+                    description[i].classList.add('show');
+
+                    let other  = tab.length - i;
+                    description[other].classList.remove('show');
+                    description[other].classList.add('hide');
+
+                }
+            });
+           
 
           
-                description[i].classList.add('show');
-                description[i].classList.remove('hide');
+             
             
         }
     }
-    start(0);
+    start();
 
 
-    // function accept() {
-
-
-        
-
-    //             if (target == tab[i]) {
-    //                 description[i].classList.add('show');
-    //                 description[i].classList.remove('hide');
-
-    //             }
-    //             if (i == a) {
-    //                 description[i].classList.add('hide');
-    //                 description[i].classList.remove('show');
-    //             }
-    //         });
-    //     }
-    //     accept();
 
 
 });
