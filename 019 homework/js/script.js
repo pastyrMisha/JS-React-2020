@@ -37,33 +37,37 @@ window.addEventListener('DOMContentLoaded', function () {
     // мои собственные
 
     let tab = document.querySelectorAll('.info-header-tab'),
-        description = document.querySelectorAll('.info-tabcontent');
+        description = document.querySelectorAll('.info-tabcontent'),
+        info = document.querySelector('.info-header');
 
 
-function start() {
-    for (let i = 0; i < tab.length; i++) {
-        description[i].classList.remove('show');
-        description[i].classList.add('hide');
-    }
-};
-
-
-function choose() {
-        for (let j = 0; j < tab.length; j++) {
-            tab[j].addEventListener('click', function(event) {
-                
-                let target = event.target;
-
-                if (target == tab[j]) {
-                    description[j].classList.remove('hide');
-                    description[j].classList.add('show');
-                }
-    });    
+    function start(a) {
+        for (let i = a; i < tab.length; i++) {
+            description[i].classList.remove('show');
+            description[i].classList.add('hide');
         }
-};
+    };
+    start(1);
 
+    function choose() {
 
+        info.addEventListener('click', function (event) {
 
+            let target = event.target;
 
+            if (target && target.classList.contains('info-header-tab')) {
 
+                for (let j = 0; j < tab.length; j++) {
+
+                    if (target == tab[j]) {
+                        start(0);
+                        description[j].classList.remove('hide');
+                        description[j].classList.add('show');
+                        
+                    }
+                }
+            }
+        });
+    }
+    choose();
 });
