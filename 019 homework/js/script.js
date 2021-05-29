@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //     }
     // })
 
-    // мои собственные
+    // мой способ
 
     let tab = document.querySelectorAll('.info-header-tab'),
         description = document.querySelectorAll('.info-tabcontent'),
