@@ -9,6 +9,7 @@
     margin: 0 auto;
     margin-top: 50px;
     padding: 11px;
+    box-sizing: border-box;
 }
 button {
     display: block;
