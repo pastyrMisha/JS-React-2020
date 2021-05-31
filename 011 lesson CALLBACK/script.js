@@ -20,3 +20,6 @@ function done() {
 }
 
 learnJS("JavaScript", done);
+
+
+// Callback-function — это та функция, которая выполнится строго после первой
