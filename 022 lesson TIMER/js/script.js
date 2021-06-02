@@ -38,13 +38,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
 // Timer
 
-let deadline = '2021-10-21';
+// let deadline = ;
     
     function getTimeRemaining(endtime) {
         let t = Date.parse(endtime) - Date.parse(new Date()),
             seconds = Math.floor((t/1000) % 60),
             minutes = Math.floor((t/1000/60) % 60),
-            // hours = Math.floor((t/(1000*60*60)));
+            // hours = Math.floor((t/(1000*60*60))); если часами таймер закончится
             hours = Math.floor((t/1000/60/60) % 24),
             days = Math.floor((t/(1000*60*60*24)));
 
@@ -57,8 +57,9 @@ let deadline = '2021-10-21';
             };
     }
 
-    function setClock(id, endtime) {
-        let timer = document.getElementById(id),
+    function setClock(endtime) {
+
+        let timer = document.getElementById('timer'),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
             seconds = timer.querySelector('.seconds'),
@@ -82,7 +83,7 @@ let deadline = '2021-10-21';
         }
     };
 
-    setClock('timer', deadline);
+    setClock('2021-10-21');
 });
 
 
