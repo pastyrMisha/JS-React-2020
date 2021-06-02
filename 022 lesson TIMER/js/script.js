@@ -57,6 +57,7 @@ window.addEventListener('DOMContentLoaded', function () {
             };
     }
 
+
     function setClock(endtime) {
 
         let timer = document.getElementById('timer'),
