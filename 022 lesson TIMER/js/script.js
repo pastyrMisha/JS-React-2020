@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 // Timer
 
-// let deadline = ;
+let deadline = '2021-10-21';
     
     function getTimeRemaining(endtime) {
         let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -49,18 +49,18 @@ window.addEventListener('DOMContentLoaded', function () {
             days = Math.floor((t/(1000*60*60*24)));
 
             return {
-              'total' : t,
-              'days' : days,
-              'hours' : hours,
-              'minutes' : minutes,
-              'seconds' : seconds
+              total : t,
+              days : days,
+              hours : hours,
+              minutes : minutes,
+              seconds : seconds
             };
     }
 
 
-    function setClock(endtime) {
+    function setClock(id, endtime) {
 
-        let timer = document.getElementById('timer'),
+        let timer = document.getElementById(id),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
             seconds = timer.querySelector('.seconds'),
@@ -84,11 +84,11 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    setClock('2021-10-21');
+    setClock('timer', deadline);
 });
 
 
-// моя рабочая реализация с https://tv-remservis.ru/
+// рабочая реализация с https://tv-remservis.ru/
 
 // window.addEventListener("DOMContentLoaded", () => {
 //     let deadLine = Date.parse('Mar 13 2021 00:00:00 GMT+0300');
