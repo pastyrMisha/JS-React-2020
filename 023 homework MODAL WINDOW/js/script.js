@@ -6,7 +6,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
     let tab = document.querySelectorAll('.info-header-tab'),
         info = document.querySelector('.info-header'),
-        tabContent = document.querySelectorAll('.info-tabcontent');
+        tabContent = document.querySelectorAll('.info-tabcontent'),
+        mainInfo = document.querySelector('.info');
 
     function hideTabContent(a) {
         for (let i = a; i < tabContent.length; i++) {
@@ -159,23 +160,17 @@ more.addEventListener('click', function() {
     document.body.style.overflow = 'hidden';
 });
 
-info.addEventListener('click', function(event) {
+
+
+mainInfo.addEventListener('click', function(event) {
     let target = event.target;
     if (target && target.classList.contains('description-btn')) {
-
-    for (let i = 0; i < moreThan.length; i++) {
-        moreThan[i].classList.add('more-splash');
+        target.classList.add('more-splash');
         overlay.style.display = 'block';
         document.body.style.overflow = 'hidden';
-    }
-    }
+      
+}
 });
-
-
-
-
-
-
 
 close.addEventListener('click', function() {
     overlay.style.display = 'none';
