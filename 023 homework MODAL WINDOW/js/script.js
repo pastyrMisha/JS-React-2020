@@ -159,6 +159,7 @@ more.addEventListener('click', function() {
 close.addEventListener('click', function() {
     overlay.style.display = 'none';
     more.classList.remove('more-splash');
+    document.body.style.overflow = '';
 })
 
 });
