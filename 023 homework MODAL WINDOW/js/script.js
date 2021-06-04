@@ -148,13 +148,34 @@ let deadline = '2021-10-21';
 
 let more = document.querySelector('.more'),
     overlay = document.querySelector('.overlay'),
-    close = document.querySelector('.popup-close');
+    close = document.querySelector('.popup-close'),
+    moreThan = document.querySelectorAll('.description-btn');
+   
+
 
 more.addEventListener('click', function() {
     overlay.style.display = 'block';
     this.classList.add('more-splash');
     document.body.style.overflow = 'hidden';
 });
+
+info.addEventListener('click', function(event) {
+    let target = event.target;
+    if (target && target.classList.contains('description-btn')) {
+
+    for (let i = 0; i < moreThan.length; i++) {
+        moreThan[i].classList.add('more-splash');
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+    }
+});
+
+
+
+
+
+
 
 close.addEventListener('click', function() {
     overlay.style.display = 'none';
