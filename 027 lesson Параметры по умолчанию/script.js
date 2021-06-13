@@ -82,9 +82,13 @@ btn.addEventListener('click', function() {
     show();
 });
 
-function calcOrDouble(number, basis) {
-    basis = basis || 2;
 
+// -----------------------------------------
+
+
+function calcOrDouble(number, basis = 2) {
+    // basis = basis || 2; ES5
     console.log(number*basis);
 }
-calcOrDouble(2,4)
+calcOrDouble(3,5);
+calcOrDouble(6);
