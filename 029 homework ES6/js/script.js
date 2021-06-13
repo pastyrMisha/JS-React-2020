@@ -11,9 +11,10 @@ window.addEventListener('DOMContentLoaded', () => {
         overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close'),
         descBtn = document.querySelectorAll('.description-btn'),
+        deadline = '2021-10-21';
 
-        // Tabs
-        hideTabContent = (a) => {
+    // Tabs
+    const hideTabContent = (a) => {
             for (let i = a; i < tabContent.length; i++) {
                 tabContent[i].classList.remove('show');
                 tabContent[i].classList.add('hide');
@@ -25,11 +26,25 @@ window.addEventListener('DOMContentLoaded', () => {
                 tabContent[b].classList.remove('hide');
                 tabContent[b].classList.add('show');
             }
-        },
+        };
 
-        // Timer
-        deadline = '2021-10-21',
-        getTimeRemaining = (endtime) => {
+    hideTabContent(1);
+
+    info.addEventListener('click', (event) => {
+        let target = event.target;
+        if (target && target.classList.contains('info-header-tab')) {
+            for (let i = 0; i < tab.length; i++) {
+                if (target == tab[i]) {
+                    hideTabContent(0);
+                    showTabContent(i);
+                    break;
+                }
+            }
+        }
+    });
+
+    // Timer
+    const getTimeRemaining = (endtime) => {
             let t = Date.parse(endtime) - Date.parse(new Date()),
                 seconds = Math.floor((t / 1000) % 60),
                 minutes = Math.floor((t / 1000 / 60) % 60),
@@ -72,28 +87,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 timeInterval = setInterval(updateClock, 1000);
         };
 
-
-    // Tabs (вызовы и события)
-    hideTabContent(1);
-
-    info.addEventListener('click', (event) => {
-        let target = event.target;
-        if (target && target.classList.contains('info-header-tab')) {
-            for (let i = 0; i < tab.length; i++) {
-                if (target == tab[i]) {
-                    hideTabContent(0);
-                    showTabContent(i);
-                    break;
-                }
-            }
-        }
-    });
-
-    // Timer (вызовы и события)
     setClock('timer', deadline);
 
-
-    // Modal (вызовы и события)
+    // Modal 
     more.addEventListener('click', () => {
         overlay.style.display = 'block';
         more.classList.add('more-splash');
@@ -118,6 +114,4 @@ window.addEventListener('DOMContentLoaded', () => {
             descBtn.classList.remove('more-splash');
         })
     });
-
-
 });
