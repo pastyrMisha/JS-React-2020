@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
 
     'use strict'
 
@@ -13,14 +13,12 @@ window.addEventListener('DOMContentLoaded', function () {
         descBtn = document.querySelectorAll('.description-btn'),
 
         // Tabs
-
         hideTabContent = (a) => {
             for (let i = a; i < tabContent.length; i++) {
                 tabContent[i].classList.remove('show');
                 tabContent[i].classList.add('hide');
             }
         },
-
 
         showTabContent = (b) => {
             if (tabContent[b].classList.contains('hide')) {
@@ -31,7 +29,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         // Timer
         deadline = '2021-10-21',
-
         getTimeRemaining = (endtime) => {
             let t = Date.parse(endtime) - Date.parse(new Date()),
                 seconds = Math.floor((t / 1000) % 60),
@@ -99,8 +96,8 @@ window.addEventListener('DOMContentLoaded', function () {
     // Modal (вызовы и события)
     more.addEventListener('click', () => {
         overlay.style.display = 'block';
-        this.classList.add('more-splash');
-        document.body.style.overflow = 'hidden';
+        more.classList.add('more-splash');
+        document.body.style.overflow = '';
     });
 
     mainInfo.addEventListener('click', (event) => {
@@ -117,21 +114,10 @@ window.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'none';
         more.classList.remove('more-splash');
         document.body.style.overflow = '';
-        descBtn.forEach(function (descBtn) {
+        descBtn.forEach((descBtn) => {
             descBtn.classList.remove('more-splash');
         })
     });
-
-
-
-
-
-
-
-
-
-
-
 
 
 });
