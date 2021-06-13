@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
         descBtn = document.querySelectorAll('.description-btn'),
         deadline = '2021-10-21';
 
-    // Tabs
+// Tabs
     const hideTabContent = (a) => {
             for (let i = a; i < tabContent.length; i++) {
                 tabContent[i].classList.remove('show');
@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Timer
+// Timer
     const getTimeRemaining = (endtime) => {
             let t = Date.parse(endtime) - Date.parse(new Date()),
                 seconds = Math.floor((t / 1000) % 60),
@@ -89,7 +89,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     setClock('timer', deadline);
 
-    // Modal 
+// Modal 
     more.addEventListener('click', () => {
         overlay.style.display = 'block';
         more.classList.add('more-splash');
@@ -114,4 +114,30 @@ window.addEventListener('DOMContentLoaded', () => {
             descBtn.classList.remove('more-splash');
         })
     });
+// Form
+    let message = {
+        loading: 'Загрузка',
+        success: 'Спасибо! Скоро мы с вами свяжемся!',
+        failure: 'Что-то пошло не так!'
+    };
+
+    let form = document.querySelector('.main-form'),
+        input = document.querySelector('input'),
+        statusMessage = document.createElement('div');
+
+        statusMessage.classList.add('status');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    form.appendChild(statusMessage);
+
+    let request = new XMLHttpRequest();
+    request.open('POST', 'server.php');
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    let formData = new FormData(form);
+    request.send(formData);
+    
+});
+
 });
