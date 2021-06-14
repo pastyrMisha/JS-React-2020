@@ -122,7 +122,7 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     let form = document.querySelector('.main-form'),
-        input = document.querySelector('input'),
+        input = document.getElementsByTagName('input'),
         statusMessage = document.createElement('div');
 
         statusMessage.classList.add('status');
@@ -135,9 +135,21 @@ form.addEventListener('submit', function(event) {
     request.open('POST', 'server.php');
     request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-    let formData = new FormData(form);
-    request.send(formData);
+
+// ====
+    let formData = new FormData(form); // Сначала, при помощи объекта FormData получаем все, что ответил наш пользователь в форме 
+    let obj = {}; // Создаем новый объект, в который мы поместим все эти данные
+
+    // С помощью метода forEach мы берем наш объект FormData и все данные, которые есть в нем помещаем в этот объект obj
+    formData.forEach(function(value, key) { 
+        obj[key] =  value;
+    });
     
+    let json = JSON.stringify(obj); // Осталось только превратить объект obj в json формат, при помощи одного из двух методов
+    request.send(json); // Отправляем json на сервер
+// ====
+
+
     request.addEventListener('readystatechange', function() {
         if(request.readyState < 4) {
             statusMessage.innerHTML = message.loading;
@@ -146,7 +158,11 @@ form.addEventListener('submit', function(event) {
         } else {
             statusMessage.innerHTML = message.failure;
         }
-    })
+    });
+
+    for (let i = 0; i < input.length; i++) {
+        input[i].value = '';
+    }
 });
 
 });
