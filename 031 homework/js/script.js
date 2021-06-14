@@ -141,7 +141,7 @@ form.addEventListener('submit', function(event) {
     request.addEventListener('readystatechange', function() {
         if(request.readyState < 4) {
             statusMessage.innerHTML = message.loading;
-        } else if(request.readyState === 4 && request.readyState == 200) {
+        } else if(request.readyState === 4 && request.status == 200) {
             statusMessage.innerHTML = message.success;
         } else {
             statusMessage.innerHTML = message.failure;
