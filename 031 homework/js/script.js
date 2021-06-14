@@ -123,13 +123,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let form = document.querySelector('.main-form'),
         input = document.getElementsByTagName('input'),
-        statusMessage = document.createElement('div');
+        statusMessage = document.createElement('div'),
+        contactForm = document.querySelector('.contact-form');
 
         statusMessage.classList.add('status');
 
-form.addEventListener('submit', function(event) {
+let sending = (elem) => {
+
+    elem.addEventListener('submit', function(event) {
     event.preventDefault();
-    form.appendChild(statusMessage);
+    elem.appendChild(statusMessage);
 
     let request = new XMLHttpRequest();
     request.open('POST', 'server.php');
@@ -137,16 +140,22 @@ form.addEventListener('submit', function(event) {
 
 
 // ====
-    let formData = new FormData(form); // Сначала, при помощи объекта FormData получаем все, что ответил наш пользователь в форме 
-    let obj = {}; // Создаем новый объект, в который мы поместим все эти данные
+    // Сначала, при помощи объекта FormData получаем все, что ответил наш пользователь в форме 
+    let formData = new FormData(elem);
+    
+    // Создаем новый объект, в который мы поместим все эти данные
+    let obj = {}; 
 
     // С помощью метода forEach мы берем наш объект FormData и все данные, которые есть в нем помещаем в этот объект obj
     formData.forEach(function(value, key) { 
         obj[key] =  value;
     });
+
+    // Осталось только превратить объект obj в json формат, при помощи одного из двух методов
+    let json = JSON.stringify(obj); 
     
-    let json = JSON.stringify(obj); // Осталось только превратить объект obj в json формат, при помощи одного из двух методов
-    request.send(json); // Отправляем json на сервер
+    // Отправляем json на сервер
+    request.send(json); 
 // ====
 
 
@@ -164,5 +173,13 @@ form.addEventListener('submit', function(event) {
         input[i].value = '';
     }
 });
+
+};
+sending(form);
+sending(contactForm);
+// ------------- HomeWork
+
+
+
 
 });
