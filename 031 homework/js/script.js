@@ -138,6 +138,15 @@ form.addEventListener('submit', function(event) {
     let formData = new FormData(form);
     request.send(formData);
     
+    request.addEventListener('readystatechange', function() {
+        if(request.readyState < 4) {
+            statusMessage.innerHTML = message.loading;
+        } else if(request.readyState === 4 && request.readyState == 200) {
+            statusMessage.innerHTML = message.success;
+        } else {
+            statusMessage.innerHTML = message.failure;
+        }
+    })
 });
 
 });
