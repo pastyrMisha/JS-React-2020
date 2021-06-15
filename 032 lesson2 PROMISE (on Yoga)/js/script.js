@@ -172,7 +172,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-    // ------------- HomeWork
+    // ------------- Promise
 
 
 
