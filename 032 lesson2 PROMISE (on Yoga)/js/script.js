@@ -137,7 +137,7 @@ window.addEventListener('DOMContentLoaded', () => {
             // Сначала, при помощи объекта FormData получаем все, что ответил наш пользователь в форме 
             let formData = new FormData(elem);
 
-            function postData() {
+            function postData(formData) {
                 return new Promise(function (resolve, reject) {
                     let request = new XMLHttpRequest();
                     request.open('POST', 'server.php');
@@ -153,8 +153,6 @@ window.addEventListener('DOMContentLoaded', () => {
                             reject()
                         }
                     }
-
-                    let formData = new FormData(elem);
 
                     let obj = {};
 
