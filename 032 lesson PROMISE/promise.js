@@ -6,7 +6,7 @@ function shoot(arrow) {
     let promise = new Promise(function (resolve, reject) {
         setTimeout(function() {
             Math.random() > .5 ? resolve({}) : reject("Вы промахнулись");
-        }, 1000);
+        }, 3000);
     })
     return promise;
 };
@@ -32,3 +32,5 @@ shoot({})
         .then(mark => console.log('Вы попали в цель!'))
         .then(win)
         .catch(lose)
+
+console.log(shoot());
