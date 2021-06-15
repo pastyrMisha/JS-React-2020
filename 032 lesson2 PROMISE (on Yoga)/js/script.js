@@ -121,49 +121,51 @@ window.addEventListener('DOMContentLoaded', () => {
         failure: 'Что-то пошло не так!'
     };
 
-    let form = document.querySelector('.main-form'),
+    let form = document.getElementsByClassName('main-form')[0],
+    contactForm = document.getElementById('form'),
         input = document.getElementsByTagName('input'),
-        statusMessage = document.createElement('div'),
-        contactForm = document.getElementById('form');
-
+        statusMessage = document.createElement('div');
+        
         statusMessage.classList.add('status');
 
-let sendForm = (elem) => {
+function sendForm(elem) {
+
 
     elem.addEventListener('submit', function(e) {
-    e.preventDefault();
-    elem.appendChild(statusMessage);
-     // Сначала, при помощи объекта FormData получаем все, что ответил наш пользователь в форме 
-    let formData = new FormData(elem);
-    
-    function postData(data) {
+        e.preventDefault();
+        elem.appendChild(statusMessage);
+        // Сначала, при помощи объекта FormData получаем все, что ответил наш пользователь в форме 
+        let formData = new FormData(elem);
 
-        return new Promise(function(resolve, reject) {
-            let request = new XMLHttpRequest();
-            request.open('POST', 'server.php');
-            request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-           
-            request.onreadystatechange = function() {
-                if(request.readyState < 4) {
-                    resolve()
-                } else if(request.status == 200 && request.status < 3) {
-                    resolve()
-                } else {
-                    reject()
+        function postData(data) {
+            return new Promise(function(resolve, reject) {
+                let request = new XMLHttpRequest();
+                request.open('POST', 'server.php');
+                request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+                request.onreadystatechange = function() {
+                    if(request.readyState < 4) {
+                        resolve()
+                    } else if (request.readyState === 4) {
+                        if (request.status == 200 && request.status < 3) 
+                            resolve()
+                    }
+                    else {
+                        reject()
+                    }
                 }
+
+                request.send(data);
+            }) // End Promise
+        } // End postData
+
+        function clearInput() {
+            for (let i = 0; i < input.length; i++) {
+                input[i].value = '';
             }
         }
 
-        request.send(data);
-    })
-} // End postData
-
-function clearInput() {
-    for (let i = 0; i < input.length; i++) {
-        input[i].value = '';
-    }
-}
-     postData(formData)
+        postData(formData)
         .then(() => statusMessage.innerHTML = message.loading)
         .then(() => {
             thanksModal.style.display = 'block';
@@ -172,10 +174,12 @@ function clearInput() {
         })
         .catch(() => statusMessage.innerHTML = message.failure)
         .then(clearInput)
-    });
-}
+
+    }) //End EventListener on submit
+} // End sendForm
 sendForm(form);
 sendForm(contactForm);
+
 
 
 });
