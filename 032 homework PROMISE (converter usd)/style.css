@@ -1,0 +1,15 @@
+label, input {
+    display: block;
+}
+label {
+    font-size: 21px;
+    font-weight: bold;
+}
+input {
+    height: 30px;
+    border: 1px solid rgb(211, 209, 209) !important;
+    padding-left: 5px;
+}
+input:focus {
+    outline: 1px solid blue !important;
+}
