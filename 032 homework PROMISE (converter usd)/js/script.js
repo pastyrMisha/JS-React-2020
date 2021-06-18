@@ -2,9 +2,6 @@ let inputRub = document.getElementById('rub'),
     inputUsd = document.getElementById('usd');
 
 
-
-
-
 inputRub.addEventListener('input', () => {
 
 
@@ -18,35 +15,38 @@ inputRub.addEventListener('input', () => {
             request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             request.send();
 
+            //  Можно использовать метод onreadystatechange:
+            request.onload = function () {
 
 
-            request.addEventListener('readystatechange', function () {
+                // request.addEventListener('readystatechange', function () {
+
+
+                // не работает:
 
                 // if (request.readyState === 4 && request.status == 200) {
-                //     resolve(JSON.parse(request.response));
-                // } else {
-                //     reject("Что-то пошло не так!")
-                // }
-                
-                request.onreadystatechange = function () {
-                    if (request.readyState < 4) {
-                        // console.log('1');
+                //         resolve(JSON.parse(request.response));
+                //     } else {
+                //         reject("Что-то пошло не так!")
+                //     }
+
+
+                // работает:
+
+                if (request.readyState === 4 && request.status == 200) {
                         resolve(JSON.parse(request.response))
-                    } else if (request.readyState === 4) {
-                        if (request.status == 200 && request.status < 3) {
-                            // console.log('2');
-                            resolve(JSON.parse(request.response)) }
-                    } else {
-                        // console.log('3');
-                        reject("Что-то пошло не так!")
-                    }
+                } 
+                else {
+                    reject("Что-то пошло не так!")
                 }
-            });
+
+                // });
+                
+            }
         })
     }
     getData()
-        .then(data => inputUsd.value = inputRub.value / data.usd)
-
+        .then(data =>  inputUsd.value = inputRub.value / data.usd)
         .catch(err => inputUsd.value = err)
 
 });
