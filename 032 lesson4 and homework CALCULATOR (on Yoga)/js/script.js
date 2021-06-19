@@ -254,12 +254,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     totalValue.innerHTML = 0;
 
+
     // в следующем обработчике событий в callback-функцию нельзя использовать как стрелочную, так как используется контекст вызова this (!)
     persons.addEventListener('change', function () {
         personSum = +this.value; // с помощью this получаем элемент, с которым мы общаемся (persons)
         total = (daysSum + personSum) * 4000;
 
-        if (restDays.value == '') {
+        if (restDays.value == '' || persons.value == '') {
             totalValue.innerHTML = 0;
         } else {
             totalValue.innerHTML = total;
@@ -270,21 +271,50 @@ window.addEventListener('DOMContentLoaded', () => {
         daysSum = +this.value;
         total = (daysSum + personSum) * 4000;
 
-        if (persons.value == '') {
+        if (persons.value == '' || restDays.value == '') {
             totalValue.innerHTML = 0;
         } else {
             totalValue.innerHTML = total;
         }
     });
 
-    place.addEventListener('change', function() {
-        if (restDays.value == '' && persons.value == '') {
+
+    place.addEventListener('change', function (event) {
+
+        if (persons.value == '' || restDays.value == '') {
             totalValue.innerHTML = 0;
         } else {
-            let a = total; // если просто total, то будет умнажаться каждый раз,при выборе select на коэффициент умножения value, а так мы записываем в a текущее значение total
-            totalValue.innerHTML = a * this.options[this.selectedIndex].value; // таким способом достали из select в html value (1, 1.5, 1.8)
+            totalValue.innerHTML = total;
         }
+        
+        let target = event.target;
+        let a = total;
+        let b = 0;
+        
+   
+
+        if (target && this.options) {
+
+        for (let i = 0; i < this.options.length; i++) {
+
+
+            console.log(this.options[i].value);
+            
+            //     b = this.options[i].value;
+
+            
+            // totalValue.innerHTML = a * b;
+            
+                
+                // console.log(event.target[this.selectedIndex]);
+        }
+    } 
+
+    
+        
     });
 
+    // let a = total; если просто total, то будет умнажаться каждый раз,при выборе select на коэффициент умножения value, а так мы записываем в a текущее значение total
+    // totalValue.innerHTML = a * this.options[this.selectedIndex].value; таким способом достали из select в html value (1, 1.5, 1.8)
 
 });
