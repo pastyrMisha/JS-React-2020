@@ -9,40 +9,20 @@ inputRub.addEventListener('input', () => {
     function getData() {
 
         return new Promise(function (resolve, reject) {
-
             let request = new XMLHttpRequest();
-            request.open('GET', 'js/current.json');
-            request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-            request.send();
-
-            //  Можно использовать метод onreadystatechange:
-            request.onload = function () {
-
-
-                // request.addEventListener('readystatechange', function () {
-
-
-                // не работает:
-
-                // if (request.readyState === 4 && request.status == 200) {
-                //         resolve(JSON.parse(request.response));
-                //     } else {
-                //         reject("Что-то пошло не так!")
-                //     }
-
-
-                // работает:
-
-                if (request.readyState === 4 && request.status == 200) {
-                        resolve(JSON.parse(request.response))
+          
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                        resolve(JSON.parse(this.responseText))
                 } 
                 else {
                     reject("Что-то пошло не так!")
-                }
-
-                // });
-                
+                } 
             }
+
+            request.open('GET', 'js/current.json', true);
+            // request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            request.send();
         })
     }
     getData()
