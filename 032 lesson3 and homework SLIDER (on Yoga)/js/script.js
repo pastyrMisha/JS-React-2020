@@ -197,11 +197,43 @@ window.addEventListener('DOMContentLoaded', () => {
         prev = document.querySelector('.prev'),
         next = document.querySelector('.next'),
         dotsWrap = document.querySelector('.slider-dots'),
-        dot = document.querySelectorAll('.dot');
+        dots = document.querySelectorAll('.dot');
 
+showSlides(sliderIndex);
 
+function showSlides(n) {
 
+    if (n > slides.length) {
+        sliderIndex = 1;
+    } 
+    if (n < 1) {
+        sliderIndex = slides.length;
+    }
+    
+    slides.forEach((item) => item.style.display = 'none');
+    // for (let i = 0; i < slides.length; i++) {
+    //     slides[i].style.display = 'none'
+    // }
+    dots.forEach((item) => item.classList.remove('dot-active'));
 
+    slides[sliderIndex - 1].style.display = 'block';
+    dots[sliderIndex - 1].classList.add('dot-active');
+}
+
+function plusSlides(n) {
+    showSlides(sliderIndex += n);
+}
+function currentSlide(n) {
+    showSlides(sliderIndex = n);
+}
+
+prev.addEventListener('click', function() {
+    plusSlides(-1);
+});
+
+next.addEventListener('click', function() {
+    plusSlides(1);
+})
 
 
 
