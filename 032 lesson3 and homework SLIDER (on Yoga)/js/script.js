@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
         descBtn = document.querySelectorAll('.description-btn'),
         deadline = '2021-10-21';
 
-// Tabs
+    // Tabs
     const hideTabContent = (a) => {
             for (let i = a; i < tabContent.length; i++) {
                 tabContent[i].classList.remove('show');
@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-// Timer
+    // Timer
     const getTimeRemaining = (endtime) => {
             let t = Date.parse(endtime) - Date.parse(new Date()),
                 seconds = Math.floor((t / 1000) % 60),
@@ -89,7 +89,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     setClock('timer', deadline);
 
-// Modal 
+    // Modal 
     more.addEventListener('click', () => {
         overlay.style.display = 'block';
         more.classList.add('more-splash');
@@ -115,7 +115,7 @@ window.addEventListener('DOMContentLoaded', () => {
         })
     });
 
-// Form
+    // Form
     let message = {
         loading: 'Загрузка',
         success: 'Спасибо! Скоро мы с вами свяжемся!',
@@ -190,8 +190,8 @@ window.addEventListener('DOMContentLoaded', () => {
     sendForm(form);
     sendForm(contactForm);
 
-//  ---------------------------------------------------
-// Slider
+    //  ---------------------------------------------------
+    // Slider
     let sliderIndex = 1,
         slides = document.querySelectorAll('.slider-item'),
         prev = document.querySelector('.prev'),
@@ -199,42 +199,50 @@ window.addEventListener('DOMContentLoaded', () => {
         dotsWrap = document.querySelector('.slider-dots'),
         dots = document.querySelectorAll('.dot');
 
-showSlides(sliderIndex);
+    showSlides(sliderIndex);
 
-function showSlides(n) {
+    function showSlides(n) {
 
-    if (n > slides.length) {
-        sliderIndex = 1;
-    } 
-    if (n < 1) {
-        sliderIndex = slides.length;
+        if (n > slides.length) {
+            sliderIndex = 1;
+        }
+        if (n < 1) {
+            sliderIndex = slides.length;
+        }
+
+        slides.forEach((item) => item.style.display = 'none');
+        // for (let i = 0; i < slides.length; i++) {
+        //     slides[i].style.display = 'none'
+        // }
+        dots.forEach((item) => item.classList.remove('dot-active'));
+
+        slides[sliderIndex - 1].style.display = 'block';
+        dots[sliderIndex - 1].classList.add('dot-active');
     }
-    
-    slides.forEach((item) => item.style.display = 'none');
-    // for (let i = 0; i < slides.length; i++) {
-    //     slides[i].style.display = 'none'
-    // }
-    dots.forEach((item) => item.classList.remove('dot-active'));
 
-    slides[sliderIndex - 1].style.display = 'block';
-    dots[sliderIndex - 1].classList.add('dot-active');
-}
+    function plusSlides(n) {
+        showSlides(sliderIndex += n);
+    }
 
-function plusSlides(n) {
-    showSlides(sliderIndex += n);
-}
-function currentSlide(n) {
-    showSlides(sliderIndex = n);
-}
+    function currentSlide(n) {
+        showSlides(sliderIndex = n);
+    }
 
-prev.addEventListener('click', function() {
-    plusSlides(-1);
-});
+    prev.addEventListener('click', function () {
+        plusSlides(-1);
+    });
 
-next.addEventListener('click', function() {
-    plusSlides(1);
-})
+    next.addEventListener('click', function () {
+        plusSlides(1);
+    })
 
+    dotsWrap.addEventListener('click', function (e) {
+        for (let i = 0; i < dots.length + 1; i++) {
+            if (e.target.classList.contains('dot') && e.target == dots[i-1]) {
+                currentSlide(i);
+            }
+        }
+    });
 
 
 });
