@@ -18,13 +18,13 @@ inputRub.addEventListener('input', () => {
                     reject("Что-то пошло не так!")
                 }
 
-                request.addEventListener('readystatechange', function () {
-                if (request.readyState === 4 && request.status == 200) {
-                        resolve(JSON.parse(request.response));
-                    } else {
-                        reject("Что-то пошло не так!")
-                    }
-                });
+                // request.addEventListener('readystatechange', function () {
+                // if (request.readyState === 4 && request.status == 200) {
+                //         resolve(JSON.parse(request.response));
+                //     } else {
+                //         reject("Что-то пошло не так!")
+                //     }
+                // });
 
             }
         }) // End Promise
