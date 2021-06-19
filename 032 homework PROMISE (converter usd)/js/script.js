@@ -18,13 +18,37 @@ inputRub.addEventListener('input', () => {
                     reject("Что-то пошло не так!")
                 }
 
+                // не работает:
                 // request.addEventListener('readystatechange', function () {
-                // if (request.readyState === 4 && request.status == 200) {
+                //     if (request.readyState === 4 && request.status == 200) {
                 //         resolve(JSON.parse(request.response));
                 //     } else {
                 //         reject("Что-то пошло не так!")
                 //     }
                 // });
+
+
+                // не работает:
+                // request.onreadystatechange = function () {
+                //     if (request.readyState === 4 && request.status == 200) {
+                //         resolve(JSON.parse(request.response));
+                //     } else {
+                //         reject("Что-то пошло не так!")
+                //     }
+                // };
+
+                // не работает: (даже с дополнительным .then)
+                //     request.onreadystatechange = function () {
+                //         if (request.readyState === 4) {
+                //             if (request.status == 200 && request.status < 3)
+                //                 resolve(JSON.parse(request.response))
+                //         } else if (request.readyState < 4) {
+                //             resolve()
+                //         } else {
+                //             reject()
+                //         }
+                //     }
+
 
             }
         }) // End Promise
