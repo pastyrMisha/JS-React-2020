@@ -236,13 +236,11 @@ window.addEventListener('DOMContentLoaded', () => {
         plusSlides(1);
     })
 
-    dotsWrap.addEventListener('click', function (e) {
+    dotsWrap.addEventListener('click', function (event) {
         for (let i = 0; i < dots.length + 1; i++) {
-            if (e.target.classList.contains('dot') && e.target == dots[i-1]) {
+            if (event.target.classList.contains('dot') && event.target == dots[i-1]) {
                 currentSlide(i);
             }
         }
     });
-
-
 });
