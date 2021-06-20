@@ -248,6 +248,7 @@ window.addEventListener('DOMContentLoaded', () => {
         restDays = document.querySelectorAll('.counter-block-input')[1],
         place = document.getElementById('select'),
         totalValue = document.getElementById('total'),
+        // indexMultiply = place.options[place.selectedIndex].value,
         personSum = 0,
         daysSum = 0,
         total = 0;
@@ -255,18 +256,25 @@ window.addEventListener('DOMContentLoaded', () => {
     totalValue.innerHTML = 0;
 
 
+
     persons.addEventListener('change', function () {
         personSum = +this.value;
         if (personSum < 1 || personSum == null || daysSum < 1 || daysSum == null) {
             totalValue.innerHTML = 0;
-        }
+        } 
+        // if (indexMultiply == 1 && (restDays.value != '' && persons.value != '')) {
+        //     totalValue.innerHTML = (daysSum + personSum) * 4000 * indexMultiply;
+        // }
     });
 
     restDays.addEventListener('change', function () {
         daysSum = +this.value;
         if (daysSum < 1 || daysSum == null || personSum < 1 || personSum == null) {
             totalValue.innerHTML = 0;
-        }
+        } 
+        // if(indexMultiply == 1 && (restDays.value != '' && persons.value != '')) {
+        //     totalValue.innerHTML = (daysSum + personSum) * 4000 * indexMultiply;
+        // }
     });
 
    
@@ -275,7 +283,7 @@ window.addEventListener('DOMContentLoaded', () => {
     place.addEventListener('change', function (event) {
 
         let multiplier = this.options[this.selectedIndex].value,
-            a = total,
+            // a = total,
             target = event.target;
         if (target && this.options) {
             totalValue.innerHTML = 0;
@@ -286,8 +294,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
             target.addEventListener('click', function () {
                 if (restDays.value != '' && persons.value != '') {
-                    a = (daysSum + personSum) * 4000 * multiplier;
-                    totalValue.innerHTML = a;
+                    total = (daysSum + personSum) * 4000 * multiplier;
+                    totalValue.innerHTML = total;
                 }
             })
 
