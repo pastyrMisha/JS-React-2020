@@ -295,9 +295,6 @@ window.addEventListener('DOMContentLoaded', () => {
                     totalValue.innerHTML = total;
                 }
             })
-
-
-
             // console.log(multiplier);
             // if (restDays.value != '' && persons.value != '') {
             //     totalValue.innerHTML = a * multiplier;
