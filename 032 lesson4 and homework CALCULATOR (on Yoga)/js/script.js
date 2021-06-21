@@ -288,9 +288,6 @@ window.addEventListener('DOMContentLoaded', () => {
         if (target && this.options) {
             totalValue.innerHTML = 0;
             // totalValue.innerHTML = (daysSum + personSum) * 4000 * multiplier;
-            
-
-
 
             target.addEventListener('click', function () {
                 if (restDays.value != '' && persons.value != '') {
