@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+section.wrapper {
+    background: gainsboro;
+    height: 100vh;
+    padding-top: 70px;
+}
+.wrapper-content {
+    box-sizing: border-box;
+    max-width: 350px;
+    height: 300px;
+    margin: 0 auto;
+    background: white;
+    display: flex;
+    flex-wrap: wrap;
+   align-content: center;
+    padding: 0px 30px;
+    margin-bottom: 10px;
+}
+h1.wrapper-content_title {
+    width: 100%;
+    font-weight: bold;
+    color: rgb(43, 42, 42);
+}
+button.wrapper_button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    color: white;
+    background: rgb(30, 90, 255);
+    border: 1px solid grey;
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+form.wrapper-content_form {
+    display: flex;
+    flex-wrap: wrap;
+    height: 200px;
+    align-content: top;
+}
+.wrapper-content_form-button {
+    display: block;
+}
+input.wrapper-content_form-mail, input.wrapper-content_form-password, 
+.wrapper-content_form-checkbox, button.wrapper-content_form-button
+ {
+    flex-basis: 100%;
+}
+input.wrapper-content_form-mail, input.wrapper-content_form-password {
+    padding-left: 5px;
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 3px;
+    height: 40px;
+}
+input.wrapper-content_form-mail {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+input.wrapper-content_form-password {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
+}
+.wrapper-content_form-checkbox {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+button.wrapper-content_form-button {
+    display: block;
+    height: 40px;
+    color: white;
+    background: rgb(30, 90, 255);
+    border: 1px solid grey;
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
