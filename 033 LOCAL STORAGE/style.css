@@ -37,6 +37,7 @@ button.wrapper_button {
     border-radius: 5px;
     outline: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
 }
 form.wrapper-content_form {
     display: flex;
@@ -81,4 +82,5 @@ button.wrapper-content_form-button {
     border-radius: 5px;
     outline: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
 }
