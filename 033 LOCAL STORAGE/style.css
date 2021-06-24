@@ -42,7 +42,7 @@ form.wrapper-content_form {
     display: flex;
     flex-wrap: wrap;
     height: 200px;
-    align-content: top;
+    align-content: center;
 }
 .wrapper-content_form-button {
     display: block;
