@@ -243,58 +243,64 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //  ---------------------------------------------------
     // Calculator
-
     let persons = document.querySelectorAll('.counter-block-input')[0],
-        restDays = document.querySelectorAll('.counter-block-input')[1],
-        place = document.getElementById('select'),
-        totalValue = document.getElementById('total'),
-        // indexMultiply = place.options[place.selectedIndex].value,
-        personSum = 0,
-        daysSum = 0,
-        total = 0;
+    restDays = document.querySelectorAll('.counter-block-input')[1],
+    place = document.getElementById('select'),
+    totalValue = document.getElementById('total');
 
-    totalValue.innerHTML = 0;
+totalValue.innerHTML = 0;
+
+    function calc() {
+        let multiplier = place.options[place.selectedIndex].value,
+            personsValue = +persons.value,
+            restDaysValue = +restDays.value;
+        if (+personsValue > 0 && +restDaysValue > 0 ) {
+            totalValue.innerHTML = (personsValue + restDaysValue) * 4000 * multiplier;
+        } else {
+            totalValue.innerHTML = 0;
+            
+        }
+   
+    };
+
+
+
 
 
 
     persons.addEventListener('change', function () {
-        personSum = +this.value;
-        if (personSum < 1 || personSum == null || daysSum < 1 || daysSum == null) {
-            totalValue.innerHTML = 0;
-        } 
-        // if (indexMultiply == 1 && (restDays.value != '' && persons.value != '')) {
-        //     totalValue.innerHTML = (daysSum + personSum) * 4000 * indexMultiply;
-        // }
+     
+        calc();
     });
 
     restDays.addEventListener('change', function () {
-        daysSum = +this.value;
-        if (daysSum < 1 || daysSum == null || personSum < 1 || personSum == null) {
-            totalValue.innerHTML = 0;
-        } 
-        // if(indexMultiply == 1 && (restDays.value != '' && persons.value != '')) {
-        //     totalValue.innerHTML = (daysSum + personSum) * 4000 * indexMultiply;
-        // }
+    
+        calc();
     });
 
-   
+    place.addEventListener('change', function () {
+ 
+        calc();
+    });
 
 
-    place.addEventListener('change', function (event) {
 
-        let multiplier = this.options[this.selectedIndex].value,
-            // a = total,
-            target = event.target;
-        if (target && this.options) {
-            totalValue.innerHTML = 0;
-            // totalValue.innerHTML = (daysSum + personSum) * 4000 * multiplier;
+});
 
-            target.addEventListener('click', function () {
-                if (restDays.value != '' && persons.value != '') {
-                    total = (daysSum + personSum) * 4000 * multiplier;
-                    totalValue.innerHTML = total;
-                }
-            })
+
+        // let multiplier = this.options[this.selectedIndex].value,
+        //     // a = total,
+        //     target = event.target;
+        // if (target && this.options) {
+        //     totalValue.innerHTML = 0;
+        //     // totalValue.innerHTML = (daysSum + personSum) * 4000 * multiplier;
+
+        //     target.addEventListener('click', function () {
+        //         if (restDays.value != '' && persons.value != '') {
+        //             total = (daysSum + personSum) * 4000 * multiplier;
+        //             totalValue.innerHTML = total;
+        //         }
+        //     })
             // console.log(multiplier);
             // if (restDays.value != '' && persons.value != '') {
             //     totalValue.innerHTML = a * multiplier;
@@ -305,18 +311,3 @@ window.addEventListener('DOMContentLoaded', () => {
             //         
 
             //     }
-        }
-
-
-
-
-        // if (restDays.value == '' || persons.value == '') {
-        //     totalValue.innerHTML = 0;
-        // } else {
-        //     let a = total; // если просто total, то будет умножаться каждый раз, при выборе select на коэффициент умножения value, а так мы записываем в a текущее значение total
-        //     totalValue.innerHTML = a * this.options[this.selectedIndex].value; // таким способом достали из select в html значение value (1, 1.5, 1.8)
-        // }
-    });
-
-
-});
