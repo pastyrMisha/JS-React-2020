@@ -13,4 +13,5 @@ window.addEventListener('DOMContentLoaded', () => {
     slider();
     tabs();
     timer();
+    modal();
 });
