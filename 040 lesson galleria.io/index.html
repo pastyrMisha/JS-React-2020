@@ -1,7 +1,23 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .tabs__content {
+            display: none;
+            /* по умолчанию прячем все блоки */
+        }
+
+        .tabs__content.active {
+            display: block;
+            /* по умолчанию показываем нужный блок */
+        }
+    </style>
     <style>
         .galleria {
             width: 700px;
@@ -9,14 +25,34 @@
             background: #000
         }
     </style>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/fullscreen/galleria.classic.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/fullscreen/galleria.classic.min.css" />
+    <link rel="stylesheet" href="style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.min.js"></script>
     <title>Slider</title>
 </head>
-
 <body>
+<div class="tabs">
+    <ul class="tabs__caption">
+        <li class="active">1-я вкладка</li>
+        <li>2-я вкладка</li>
+    </ul>
+    <div class="tabs__content active">
+        Содержимое первого блока
+    </div>
+    <div class="tabs__content">
+        Содержимое второго блока
+    </div>
+</div><!-- .tabs -->
+
+
+
+<!-- Progress -->
+<div class="progress-top"></div>
+<div class="progress-right"></div>
+<div class="progress-bottom"></div>
+<div class="progress-left"></div>
+
     <div class="galleria">
         <img src="photo1.webp">
         <img src="photo2.jpg">
@@ -35,6 +71,88 @@
             });
             Galleria.run('.galleria');
         }());
+    </script>
+    <script>
+        (function ($) {
+            $(function () {
+
+                $('ul.tabs__caption').on('click', 'li:not(.active)', function () {
+                    $(this).addClass('active').siblings().removeClass('active')
+                        .closest('div.tabs').find('div.tabs__content').removeClass('active').eq($(
+                            this).index()).addClass('active');
+                })
+
+            })
+        })(jQuery)
+    </script>
+    <script type="text/javascript">
+        // Progress Scroll
+        const ProgressScroll = (() => {
+            let s;
+
+            return {
+                settings() {
+                    return {
+                        top: $('.progress-top'),
+                        right: $('.progress-right'),
+                        bottom: $('.progress-bottom'),
+                        left: $('.progress-left'),
+                        windowHeight: $(window).height(),
+                        windowWidth: $(window).width(),
+                        scrollHeight: $(document).height() - $(window).height(),
+                        progressTotal: $(window).width(),
+                        scrollPosition: $(document).scrollTop()
+                    };
+                },
+
+                init() {
+                    s = this.settings();
+                    this.bindEvents();
+                },
+
+                bindEvents() {
+                    $(window).on('scroll', this.onScroll);
+                    $(window).on('resize', this.onResize);
+
+                    this.progress();
+                },
+
+                onScroll() {
+                    s.scrollPosition = $(document).scrollTop();
+
+                    ProgressScroll.requestTick();
+                },
+
+                onResize() {
+                    s.windowHeight = $(window).height();
+                    s.windowWidth = $(window).width();
+                    s.scrollHeight = $(document).height() - s.windowHeight;
+                    s.progressTotal = s.windowHeight * 2 + s.windowWidth * 2;
+
+                    ProgressScroll.requestTick();
+                },
+
+                requestTick() {
+                    requestAnimationFrame(this.progress);
+                },
+
+                progress() {
+                    const percentage = s.scrollPosition / s.scrollHeight;
+                    const width = s.windowWidth / s.progressTotal;
+                    const height = s.windowHeight / s.progressTotal;
+
+                    s.top.css('width', `${(percentage / width) * 100}%`);
+                    s.right.css('height', `${((percentage - width) / height) * 100}%`);
+                    s.bottom.css('width', `${((percentage - width - height) / width) * 100}%`);
+                    s.left.css('height', `${((percentage - width - height - width) / height) * 100}%`);
+                }
+            };
+        })();
+
+        // Init
+        $(() => {
+            ProgressScroll.init();
+        });
     </script>
 </body>
 
