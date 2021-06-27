@@ -1,38 +1,47 @@
-function promise () {
-    let drink = 0;
+"use strict";
 
-function shoot(arrow) {
+require("core-js/modules/es.object.to-string.js");
+
+require("core-js/modules/es.promise.js");
+
+require("core-js/modules/es.object.to-string.js");
+
+require("core-js/modules/es.promise.js");
+
+function promise() {
+  var drink = 0;
+
+  function shoot(arrow) {
     console.log('Вы сделали выстрел...');
-
-    let promise = new Promise(function (resolve, reject) {
-        setTimeout(function() {
-            Math.random() > .5 ? resolve({}) : reject("Вы промахнулись");
-        }, 3000);
-    })
+    var promise = new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        Math.random() > .5 ? resolve({}) : reject("Вы промахнулись");
+      }, 3000);
+    });
     return promise;
-};
+  }
 
-function win() {
+  ;
+
+  function win() {
     console.log('Вы победили!');
-    (drink == 1) ? buyBeer() : giveMoney();
-}
+    drink == 1 ? buyBeer() : giveMoney();
+  }
 
-function lose() {
+  function lose() {
     console.log('Вы проиграли!');
-}
+  }
 
-function buyBeer() {
+  function buyBeer() {
     console.log('Вам купили пиво');
-}
+  }
 
-function giveMoney() {
+  function giveMoney() {
     console.log('Вам заплатили!');
-}
+  }
 
-shoot({})
-        .then(mark => console.log('Вы попали в цель!'))
-        .then(win)
-        .catch(lose)
-
-console.log(shoot());
+  shoot({}).then(function (mark) {
+    return console.log('Вы попали в цель!');
+  }).then(win).catch(lose);
+  console.log(shoot());
 }
