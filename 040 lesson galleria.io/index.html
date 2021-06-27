@@ -1,27 +1,41 @@
 <!doctype html>
 <html>
-    <head>
-        <style>
-            .galleria{ width: 700px; height: 400px; background: #000 }
-        </style>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/fullscreen/galleria.classic.min.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.min.js"></script> 
-        <title>Slider</title>
-    </head>
-    <body>
-        <div class="galleria">
-            <img src="photo1.webp">
-            <img src="photo2.jpg">
-            <img src="photo3.jpg">
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.js"></script>
-        <script>
-            
-            (function() {
-                
-                Galleria.run('.galleria');
-            }());
-        </script>
-    </body>
+
+<head>
+    <style>
+        .galleria {
+            width: 700px;
+            height: 400px;
+            background: #000
+        }
+    </style>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/fullscreen/galleria.classic.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.min.js"></script>
+    <title>Slider</title>
+</head>
+
+<body>
+    <div class="galleria">
+        <img src="photo1.webp">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.js"></script>
+    <script>
+        (function () {
+            Galleria.configure({
+                transition: 'slide',
+                imageCrop: true,
+                height: 700,
+                width: 1100,
+                autoplay: 3000,
+                lightbox: true
+            });
+            Galleria.run('.galleria');
+        }());
+    </script>
+</body>
+
 </html>
