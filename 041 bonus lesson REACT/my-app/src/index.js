@@ -4,9 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+function Greet() {
+
+  let phrase = "World!";
+
+  return(
+    <h1> Hello {phrase} !!!!!!!! </h1>
+  )
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Greet />
   </React.StrictMode>,
   document.getElementById('root')
 );
