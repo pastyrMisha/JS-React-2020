@@ -1,6 +1,6 @@
 function User (name, age) {
     this.name = name;
-    let userAge = age;
+    const userAge = age;
 
 // Геттер:
     this.getAge = function() {
