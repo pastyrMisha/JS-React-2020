@@ -20,7 +20,6 @@ import Button from './Button';
 //     </div>
 //   )
 // }
-
 class App extends React.Component {
     render() {
         return (
