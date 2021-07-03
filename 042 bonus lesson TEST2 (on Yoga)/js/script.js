@@ -64,8 +64,8 @@
             let timer = document.getElementById(id),
                 hours = timer.querySelector('.hours'),
                 minutes = timer.querySelector('.minutes'),
-                seconds = timer.querySelector('.seconds'),
-                updateClock = () => {
+                seconds = timer.querySelector('.seconds');
+                function updateClock() {
                     let t = getTimeRemaining(endtime);
                     hours.textContent = t.hours;
                     minutes.textContent = t.minutes;
@@ -83,8 +83,12 @@
                     if (t.total <= 0) {
                         clearInterval(timeInterval);
                     }
-                },
-                timeInterval = setInterval(updateClock, 1000);
+                };
+
+                updateClock()
+                let timeInterval = setInterval(updateClock, 1000);
+
+                return '' // нужна для test.js 
         };
 
     setClock('timer', deadline);
@@ -242,7 +246,7 @@
     });
 
     //  ---------------------------------------------------
-    // Calculator
+    // Calc
     let persons = document.querySelectorAll('.counter-block-input')[0],
     restDays = document.querySelectorAll('.counter-block-input')[1],
     place = document.getElementById('select'),
